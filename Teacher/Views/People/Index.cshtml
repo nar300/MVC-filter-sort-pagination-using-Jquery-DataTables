@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Teacher.Models.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="mytable">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+
+
+    </thead>
+</table>
+
+
+
+@section scripts{
+    
+    
+    <script>
+
+
+        $('#mytable').DataTable({
+
+            ajax: {
+
+                url: '/People/GetList',
+
+                dataSrc: 'data'
+
+            },
+
+            columns: [
+                { data:"Name"},
+                { data:"Gender"},
+                { data:"IsChecked"}
+
+            ]
+
+        });
+
+
+    </script>
+    }
